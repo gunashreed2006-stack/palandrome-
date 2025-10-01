@@ -1,0 +1,51 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#define SIZE 10
+struct stack
+{
+    char data[SIZE];
+    int top;
+};
+typedef struct stack STACK;
+void push(STACK *s,char item)
+{
+    s->data[++s->top]=item;
+}
+char pop(STACK *s)
+{
+    return s->data[(s->top)--];
+}
+void palandrome(STACK *s)
+{
+    s->top=-1;
+}
+int main()
+{
+    STACK s;
+    char str[SIZE],rev[SIZE];
+    int i,lene;
+    palandrome(&s);
+    printf("\n read string");
+    scanf("%s",str);
+    lene=strlen(str);
+    for(i=0;i<lene;i++)
+    {
+        push(&s,str[i]);
+ 
+    }
+    for(i=0;i<lene;i++)
+    {
+        rev[i]=pop(&s);
+    }
+    rev[lene]='\0';
+    if(strcmp(str,rev)==0)
+    {
+        printf("\the string is palandrome");
+    }
+    else
+    {
+        printf("\n is not a palandrome");
+    }
+    return 0;
+}
